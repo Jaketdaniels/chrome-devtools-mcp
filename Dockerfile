@@ -32,8 +32,8 @@ RUN apk add --no-cache \
 COPY package*.json ./
 COPY scripts ./scripts
 
-# Install production dependencies only
-RUN npm ci --omit=dev && npm cache clean --force
+# Install ALL dependencies (core-js and chrome-devtools-frontend are needed at runtime)
+RUN npm ci && npm cache clean --force
 
 # Copy built code from builder stage
 COPY --from=builder /app/build ./build
