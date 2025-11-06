@@ -1,6 +1,6 @@
 # Use Node.js 20 with Puppeteer (includes Chrome)
-# Explicitly specify arm64 platform for Apple Silicon
-FROM --platform=linux/arm64 ghcr.io/puppeteer/puppeteer:24.1.0
+# Note: This image is amd64 only - will use emulation on Apple Silicon (ARM64)
+FROM ghcr.io/puppeteer/puppeteer:24.1.0
 
 # Set working directory
 WORKDIR /app
