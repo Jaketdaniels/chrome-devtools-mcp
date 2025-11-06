@@ -4,14 +4,11 @@ FROM ghcr.io/puppeteer/puppeteer:24.1.0
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy all source files first (needed for prepare script)
+COPY . .
 
 # Install dependencies
 RUN npm ci
-
-# Copy source code
-COPY . .
 
 # Build the project
 RUN npm run build
